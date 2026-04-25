@@ -1,39 +1,81 @@
-name: Deploy to GitHub Pages
+name: SPS Publish
 
 on:
-  # 每次推送到 `main` 分支时触发这个“工作流程”
-  # 如果你使用了别的分支名，请按需将 `main` 替换成你的分支名
-  push:
-    branches: [ main ]
-  # 允许你在 GitHub 上的 Actions 标签中手动触发此“工作流程”
   workflow_dispatch:
+  push:
+    branches:
+      - publish
+  repository_dispatch:
+    types:
+      - sps_digital_garden_updated
 
-# 允许 job 克隆 repo 并创建一个 page deployment
 permissions:
   contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
+
+    env:
+      THEME: "twilight"
+      SPS_DG_PATH: "./sps-digital-garden"
+
     steps:
-      - name: Checkout your repository using git
+      - name: Prepare Dynamic Environment Variables
+        run: |
+          echo "BUILD_PATH=./astro-theme-${{ env.THEME }}" >> $GITHUB_ENV
+
+      - name: Checkout
         uses: actions/checkout@v5
+        with:
+          ref: 'publish'
+          path: ${{ env.BUILD_PATH }}
+
+      - name: Checkout sps-digital-garden
+        uses: actions/checkout@v4
+        with:
+          repository: SPSZerone/sps-digital-garden
+          ref: 'main'
+          path: ${{ env.SPS_DG_PATH }}
+          token: ${{ secrets.SPS_DG_PUBLISH_PAT }}
+
+      - name: Setup Nushell
+        uses: hustcer/setup-nu@v3
+        with:
+          nu-version: '0.112.2'
+
+      - name: Setup Golang
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: '${{ env.SPS_DG_PATH }}/go/go.mod'
+          # go-version: '1.26.x'
+          cache: true
+
+      - name: "SPS Digital Garden -> scripts/publish.nu"
+        run: nu ${{ env.SPS_DG_PATH }}/scripts/publish.nu -s astro -t ${{ env.THEME }} -p ${{ env.BUILD_PATH }}
+
       - name: Install, build, and upload your site
         uses: withastro/action@v5
         with:
-          package-manager: pnpm@9.14.4
+          package-manager: pnpm@10.33.0
           build-cmd: pnpm run build
-        # env:
+          # env:
           # PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # 对变量值使用单引号。（可选）
 
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
