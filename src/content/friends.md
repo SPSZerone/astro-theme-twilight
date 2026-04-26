@@ -1,5 +1,7 @@
 ---
 
+<!--
+
 ## How to Apply
 
 Please send your website information to: xxx@xxx.com
@@ -16,3 +18,4 @@ Site Desc: [Your Site Description]
 Site Link: [Your Site Link]
 Avatar Link: [Your Avatar Link]
 ```
+-->
