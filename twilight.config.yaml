@@ -77,10 +77,10 @@ site:
                 # 在主页显示文本
                 enable: true
                 # 主标题
-                title: "Twilight"
+                title: "William Chen - 陈威"
                 # 副标题，支持单个字符串或字符串数组
                 subtitle:
-                    - "Illuminate Our Paths"
+                    - "Follow Heart"
                 # 副标题打字机效果
                 typewriter:
                     # 启用副标题打字机效果
@@ -277,9 +277,9 @@ sidebar:
 # 资料配置
 profile:
     # 头像配置 (相对于 /public 目录)
-    avatar: "/assets/images/avatar.jpg"
+    avatar: "/assets/images/avatar.png"
     # 信息配置
-    name: "Twilight"
+    name: "William Chen - 陈威"
     # 简介配置
     bio: "Hi"
     # 链接配置
@@ -290,7 +290,7 @@ profile:
             # 图标
             icon: "fa6-brands:github"
             # 链接
-            url: "https://github.com/Spr-Aachen/Twilight"
+            url: "https://github.com/SPSZerone"
 
 # 公告配置
 announcement:
