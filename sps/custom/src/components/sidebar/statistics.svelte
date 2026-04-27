@@ -499,7 +499,7 @@
                         </div>
                     </div>
                 </div>
-                <div bind:this={heatmapContainer} class="heatmap-container transition-opacity duration-600" class:opacity-0={isHeatmapLoading}></div>
+                <div bind:this={heatmapContainer} class="tiks-hover heatmap-container transition-opacity duration-600" class:opacity-0={isHeatmapLoading}></div>
             </div>
 
             {#if isDesktop}
@@ -511,7 +511,7 @@
                             </div>
                         </div>
                     {/if}
-                    <div bind:this={categoriesContainer} class="tiks-success tiks-hover radar-container transition-opacity duration-600" class:opacity-0={isCategoriesLoading}></div>
+                    <div bind:this={categoriesContainer} class="tiks-hover radar-container transition-opacity duration-600" class:opacity-0={isCategoriesLoading}></div>
                 </div>
 
                 <div class="chart-section radar-section">
@@ -522,7 +522,7 @@
                             </div>
                         </div>
                     {/if}
-                    <div bind:this={tagsContainer} class="tiks-success tiks-hover radar-container transition-opacity duration-600" class:opacity-0={isTagsLoading}></div>
+                    <div bind:this={tagsContainer} class="tiks-hover radar-container transition-opacity duration-600" class:opacity-0={isTagsLoading}></div>
                 </div>
             {/if}
         </div>

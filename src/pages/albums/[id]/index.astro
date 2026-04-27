@@ -72,7 +72,8 @@ if (!album) {
                 data-columns={album.columns || 3}
             >
                 {album.photos.map((photo, index) => (
-                    <figure class="photo-item group relative overflow-hidden rounded-lg">
+                    <figure class="photo-item group relative overflow-hidden rounded-lg
+                                  tiks-success tiks-hover">
                         <ImageWrapper
                             src={photo.src}
                             basePath={album.basePath}

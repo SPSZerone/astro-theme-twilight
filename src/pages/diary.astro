@@ -60,8 +60,7 @@ function formatTime(dateString: string): string {
                 <div class="moments-timeline">
                     <div class="timeline-list space-y-4">
                     {sortedMoments.map(moment => (
-                        <div class="moment-item card-base p-4 md:p-6 lg:p-8 hover:shadow-lg transition-all
-                                    tiks-success tiks-hover">
+                        <div class="moment-item card-base p-4 md:p-6 lg:p-8 hover:shadow-lg transition-all">
                                 <div class="moment-content">
                                     {moment.title && (
                                         <h2 class="moment-title text-base md:text-lg lg:text-xl font-bold text-90 mb-2">{moment.title}</h2>
@@ -70,7 +69,8 @@ function formatTime(dateString: string): string {
                                     {moment.images && moment.images.length > 0 && (
                                         <div class="moment-images flex flex-wrap gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4">
                                             {moment.images.map((image, index) => (
-                                                <div class="image-item relative rounded-md overflow-hidden cursor-pointer hover:scale-105 transition max-w-full">
+                                                <div class="image-item relative rounded-md overflow-hidden cursor-pointer hover:scale-105 transition max-w-full
+                                                            tiks-success tiks-hover">
                                                     <ImageWrapper
                                                         src={image}
                                                         basePath={moment.basePath}
