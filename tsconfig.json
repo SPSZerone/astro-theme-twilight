@@ -27,6 +27,7 @@
             "@layouts/*": ["./src/layouts/*"],
             "@styles/*": ["./src/styles/*"],
             "@/*": ["./src/*"],
+            "@spscustom/*": ["./sps/custom/src/*"]
         },
         "noEmit": true,
         "allowImportingTsExtensions": true,

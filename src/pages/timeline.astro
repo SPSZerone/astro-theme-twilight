@@ -10,11 +10,11 @@ import {
     getTimelineByType,
     getCurrentItems,
     getTotalWorkExperience,
-} from "@utils/timeline";
-import { i18n } from "@i18n/translation";
-import I18nKey from "@i18n/i18nKey";
+} from "@spscustom/utils/timeline";
+import { i18n } from "@spscustom/i18n/translation";
+import I18nKey from "@spscustom/i18n/i18nKey";
 import IconifyLoader from "@components/common/iconifyLoader.astro";
-import TimelineItem from "@components/data/timelineItem.astro";
+import TimelineItem from "@spscustom/components/data/timelineItem.astro";
 import GridLayout from "@layouts/grid.astro";
 import BackwardButton from "@components/backwardButton.astro";
 
@@ -73,6 +73,35 @@ const getTypeIcon = (type: string) => {
                     <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.total}</div>
                     <div class="text-sm text-blue-600/70 dark:text-blue-400/70">{i18n(I18nKey.timelineTotal)}</div>
                 </div>
+                <div class="bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4">
+                    <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{stats.byType.piano}</div>
+                    <div class="text-sm text-purple-600/70 dark:text-purple-400/70">{i18n(I18nKey.timelinePianoS)}</div>
+                </div>
+                <div class="bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4">
+                    <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{stats.byType.violin}</div>
+                    <div class="text-sm text-purple-600/70 dark:text-purple-400/70">{i18n(I18nKey.timelineViolinS)}</div>
+                </div>
+                <div class="bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4">
+                    <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{stats.byType.cello}</div>
+                    <div class="text-sm text-purple-600/70 dark:text-purple-400/70">{i18n(I18nKey.timelineCelloS)}</div>
+                </div>
+                <div class="bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4">
+                    <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{stats.byType.cycling}</div>
+                    <div class="text-sm text-purple-600/70 dark:text-purple-400/70">{i18n(I18nKey.timelineCyclingS)}</div>
+                </div>
+                <div class="bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4">
+                  <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{stats.byType.fitness}</div>
+                  <div class="text-sm text-purple-600/70 dark:text-purple-400/70">{i18n(I18nKey.timelineFitnessS)}</div>
+                </div>
+                <div class="bg-linear-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-4">
+                    <div class="text-2xl font-bold text-green-600 dark:text-green-400">{stats.byType.project}</div>
+                    <div class="text-sm text-green-600/70 dark:text-green-400/70">{i18n(I18nKey.timelineProjects)}</div>
+                </div>
+                <div class="bg-linear-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg p-4">
+                  <div class="text-2xl font-bold text-orange-600 dark:text-orange-400">{stats.byType.work}</div>
+                  <div class="text-sm text-orange-600/70 dark:text-orange-400/70">{i18n(I18nKey.timelineWork)}</div>
+                </div>
+                <!--
                 <div class="bg-linear-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-4">
                     <div class="text-2xl font-bold text-green-600 dark:text-green-400">{stats.byType.work}</div>
                     <div class="text-sm text-green-600/70 dark:text-green-400/70">{i18n(I18nKey.timelineWork)}</div>
@@ -81,6 +110,7 @@ const getTypeIcon = (type: string) => {
                     <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">{stats.byType.project}</div>
                     <div class="text-sm text-purple-600/70 dark:text-purple-400/70">{i18n(I18nKey.timelineProjects)}</div>
                 </div>
+                -->
                 <div class="bg-linear-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg p-4">
                     <div class="text-2xl font-bold text-orange-600 dark:text-orange-400">
                         {workExperience.years}+

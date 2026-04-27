@@ -3,7 +3,7 @@ import { getEntry, render } from "astro:content";
 
 import { LinkPresets } from "@constants/link-presets";
 import { LinkPreset } from "@/types/config";
-import { friendsData } from "@utils/friends";
+import { friendsData } from "@spscustom/utils/friends";
 import Markdown from "@components/common/markdown.astro";
 import GridLayout from "@layouts/grid.astro";
 import BackwardButton from "@components/backwardButton.astro";
@@ -30,7 +30,8 @@ function shuffleArray(array) {
     return newArray;
 }
 
-const shuffledItems = shuffleArray(items);
+// const shuffledItems = shuffleArray(items);
+const shuffledItems = items;
 ---
 
 <GridLayout title={pageTitle} description={pageDescription}>

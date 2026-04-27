@@ -11,11 +11,11 @@ import {
     getSkillsByCategory,
     getTotalExperience,
     skillsData,
-} from "@utils/skills";
-import { i18n } from "@i18n/translation";
-import I18nKey from "@i18n/i18nKey";
+} from "@spscustom/utils/skills";
+import { i18n } from "@spscustom/i18n/translation";
+import I18nKey from "@spscustom/i18n/i18nKey";
 import IconifyLoader from "@components/common/iconifyLoader.astro";
-import SkillCard from "@components/data/skillCard.astro";
+import SkillCard from "@spscustom/components/data/skillCard.astro";
 import GridLayout from "@layouts/grid.astro";
 import BackwardButton from "@components/backwardButton.astro";
 
@@ -43,6 +43,48 @@ const skillsByCategory = categories.reduce(
 // 获取分类的翻译文本
 const getCategoryText = (category: string) => {
     switch (category) {
+        case "music_tool":
+        return i18n(I18nKey.skillsMusicTool);
+        case "music_instrument":
+          return i18n(I18nKey.skillsMusicInstrument);
+        case "language":
+          return i18n(I18nKey.skillsLanguage);
+        case "os_platform":
+          return i18n(I18nKey.skillsOsPlatform);
+        case "cloud":
+          return i18n(I18nKey.skillsCloud);
+        case "game_engine":
+          return i18n(I18nKey.skillsGameEngine);
+        case "graphics_physics":
+          return i18n(I18nKey.skillsGraphicsPhysics);
+        case "graphics":
+          return i18n(I18nKey.skillsGraphics);
+        case "physics":
+          return i18n(I18nKey.skillsPhysics);
+        case "gui":
+          return i18n(I18nKey.skillsGUI);
+        case "doc_diagram":
+          return i18n(I18nKey.skillsDocDiagram);
+        case "doc":
+          return i18n(I18nKey.skillsDoc);
+        case "diagram":
+          return i18n(I18nKey.skillsDiagram);
+        case "ssg":
+          return i18n(I18nKey.skillsSSG);
+        case "terminal":
+          return i18n(I18nKey.skillsTerminal);
+        case "shell":
+          return i18n(I18nKey.skillsShell);
+        case "editor_ide":
+          return i18n(I18nKey.skillsEditorIDE);
+        case "misc":
+          return i18n(I18nKey.skillsMisc);
+        case "game_full_stack":
+          return i18n(I18nKey.skillsGameFullStack);
+        case "game_server":
+          return i18n(I18nKey.skillsGameServer);
+        case "game_client":
+          return i18n(I18nKey.skillsGameClient);
         case "ai":
             return i18n(I18nKey.skillsAI);
         case "server":
