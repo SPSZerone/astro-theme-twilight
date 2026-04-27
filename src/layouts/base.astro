@@ -1,4 +1,6 @@
 ---
+import Audio from '@spscommon/scripts/audio/Audio.astro';
+
 import "katex/dist/katex.css";
 
 import { siteConfig, profileConfig, musicPlayerConfig, pioConfig } from "@/config";
@@ -236,6 +238,7 @@ const { enabled: analyticsEnabled, code: analyticsCode } = getAnalyticsConfig();
         {pioConfig.enable && <Pio client:visible />}
         <!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
         <div id="page-height-extend" class="hidden h-[300vh]"></div>
+        <Audio />
     </body>
 </html>
 

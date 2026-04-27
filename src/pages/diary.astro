@@ -6,7 +6,7 @@ import { sortedMoments } from "@/utils/diary";
 import { i18n } from "@i18n/translation";
 import I18nKey from "@i18n/i18nKey";
 import GridLayout from "@layouts/grid.astro";
-import BackwardButton from "@components/backwardButton.astro";
+import BackwardButton from "@spscustom/components/backwardButton.astro";
 import ImageWrapper from "@components/common/imageWrapper.astro";
 
 
@@ -60,7 +60,8 @@ function formatTime(dateString: string): string {
                 <div class="moments-timeline">
                     <div class="timeline-list space-y-4">
                     {sortedMoments.map(moment => (
-                        <div class="moment-item card-base p-4 md:p-6 lg:p-8 hover:shadow-lg transition-all">
+                        <div class="moment-item card-base p-4 md:p-6 lg:p-8 hover:shadow-lg transition-all
+                                    tiks-success tiks-hover">
                                 <div class="moment-content">
                                     {moment.title && (
                                         <h2 class="moment-title text-base md:text-lg lg:text-xl font-bold text-90 mb-2">{moment.title}</h2>

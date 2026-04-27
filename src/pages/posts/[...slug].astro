@@ -17,7 +17,7 @@ import Markdown from "@components/common/markdown.astro";
 import ImageWrapper from "@components/common/imageWrapper.astro";
 import Comment from "@components/post/comment.astro";
 import PasswordProtection from "@components/common/passwordProtection.astro";
-import PostMetadata from "@components/post/postMeta.astro";
+import PostMetadata from "@spscustom/components/post/postMeta.astro";
 import GridLayout from "@layouts/grid.astro";
 
 
@@ -342,6 +342,7 @@ const jsonLd = {
             class:list={[
                 "w-full font-bold overflow-hidden active:scale-95",
                 { "pointer-events-none": !entry.data.nextSlug },
+                "tiks-success tiks-hover",
             ]}
         >
             {
@@ -365,6 +366,7 @@ const jsonLd = {
             class:list={[
                 "w-full font-bold overflow-hidden active:scale-95",
                 { "pointer-events-none": !entry.data.prevSlug },
+              "tiks-success tiks-hover",
             ]}
         >
             {

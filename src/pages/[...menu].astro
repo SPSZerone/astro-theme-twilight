@@ -6,7 +6,7 @@ import { navbarConfig } from "@/config";
 import { LinkPresets } from "@constants/link-presets";
 import { url } from "@utils/url";
 import GridLayout from "@layouts/grid.astro";
-import BackwardButton from "@components/backwardButton.astro";
+import BackwardButton from "@spscustom/components/backwardButton.astro";
 
 
 export async function getStaticPaths() {
@@ -65,7 +65,8 @@ const pageDescription = link.description || "";
                     <a
                         href={child.external ? child.url : url(child.url)}
                         target={child.external ? "_blank" : null}
-                        class="menu-card group flex flex-col items-center justify-center p-8 rounded-xl border transition-all duration-300"
+                        class="menu-card group flex flex-col items-center justify-center p-8 rounded-xl border transition-all duration-300
+                                tiks-success tiks-hover"
                     >
                         <div class="icon-wrapper w-16 h-16 flex items-center justify-center rounded-full mb-4 transition-all duration-300">
                             {child.icon && <Icon name={child.icon} class="text-3xl" />}

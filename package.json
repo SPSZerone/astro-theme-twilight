@@ -33,6 +33,7 @@
 		"@iconify-json/fa6-solid": "^1.2.4",
 		"@iconify-json/material-symbols": "^1.2.67",
 		"@iconify/svelte": "^5.2.1",
+		"@rexa-developer/tiks": "^0.1.8",
 		"@swup/astro": "^1.8.0",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.2.2",

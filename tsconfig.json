@@ -27,6 +27,7 @@
             "@layouts/*": ["./src/layouts/*"],
             "@styles/*": ["./src/styles/*"],
             "@/*": ["./src/*"],
+            "@spscommon/*": ["./sps/common/src/*"],
             "@spscustom/*": ["./sps/custom/src/*"]
         },
         "noEmit": true,
