@@ -1,6 +1,7 @@
 ---
 import Audio from '@spscommon/scripts/audio/Audio.astro';
-import Totoro from '@spscommon/components/effects/Totoro.astro';
+import Totoro from '@spscommon/components/widgets/Totoro.astro';
+import Piano from '@spscommon/components/widgets/Piano.tsx';
 
 import "katex/dist/katex.css";
 
@@ -241,6 +242,7 @@ const { enabled: analyticsEnabled, code: analyticsCode } = getAnalyticsConfig();
         <div id="page-height-extend" class="hidden h-[300vh]"></div>
         <Audio />
         <Totoro />
+        <Piano client:only="react" />
     </body>
 </html>
 

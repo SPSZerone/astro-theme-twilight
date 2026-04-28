@@ -35,6 +35,9 @@ import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
 
+import react from "@astrojs/react";
+
+
 // Choose adapter depending on deployment environment
 const adapter = process.env.GITHUB_ACTIONS
     ? undefined
@@ -55,100 +58,93 @@ export default defineConfig({
     base: "/",
     trailingSlash: "always",
     adapter: adapter,
-    integrations: [
-        decapCmsOauth({
-            configPath: "./.decap.yml", // Path to the Decap CMS configuration file
-            decapCMSVersion: "3.9.0",
-            enable: false, // Set to true to use oauth (Requires .env configuration)
-        }),
-        swup({
-            theme: false,
-            animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
-            containers: [
-                "#swup-container",
-                "#left-sidebar",
-                "#right-sidebar",
-                "#middle-sidebar",
-            ],
-            cache: true,
-            preload: true,
-            accessibility: true,
-            updateHead: true,
-            updateBodyClass: false,
-            globalInstance: true,
-            // Scroll related configuration optimization
-            smoothScrolling: false, // Disable smooth scrolling to improve performance and avoid conflicts with anchor navigation
-            resolveUrl: (url) => url,
-            animateHistoryBrowsing: false,
-            skipPopStateHandling: (event) => {
-                // Skip anchor link handling, let the browser handle it natively
-                return event.state && event.state.url && event.state.url.includes("#");
-            },
-        }),
-        icon({
-            include: {
-                "fa6-brands": ["*"],
-                "fa6-regular": ["*"],
-                "fa6-solid": ["*"],
-                mdi: ["*"],
-            },
-        }),
-        expressiveCode({
-            themes: ["github-light", "github-dark"],
-            themeCSSSelector: (theme) => `[data-theme="${theme}"]`,
-            plugins: [
-                pluginCollapsibleSections(),
-                pluginLineNumbers(),
-                pluginCollapseButton(),
-                pluginCopyButton(),
-                pluginLanguageBadge(),
-            ],
-            defaultProps: {
-                wrap: true,
-                overridesByLang: {
-                    shellsession: {
-                        showLineNumbers: false,
-                    },
+    integrations: [decapCmsOauth({
+        configPath: "./.decap.yml", // Path to the Decap CMS configuration file
+        decapCMSVersion: "3.9.0",
+        enable: false, // Set to true to use oauth (Requires .env configuration)
+    }), swup({
+        theme: false,
+        animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
+        containers: [
+            "#swup-container",
+            "#left-sidebar",
+            "#right-sidebar",
+            "#middle-sidebar",
+        ],
+        cache: true,
+        preload: true,
+        accessibility: true,
+        updateHead: true,
+        updateBodyClass: false,
+        globalInstance: true,
+        // Scroll related configuration optimization
+        smoothScrolling: false, // Disable smooth scrolling to improve performance and avoid conflicts with anchor navigation
+        resolveUrl: (url) => url,
+        animateHistoryBrowsing: false,
+        skipPopStateHandling: (event) => {
+            // Skip anchor link handling, let the browser handle it natively
+            return event.state && event.state.url && event.state.url.includes("#");
+        },
+    }), icon({
+        include: {
+            "fa6-brands": ["*"],
+            "fa6-regular": ["*"],
+            "fa6-solid": ["*"],
+            mdi: ["*"],
+        },
+    }), expressiveCode({
+        themes: ["github-light", "github-dark"],
+        themeCSSSelector: (theme) => `[data-theme="${theme}"]`,
+        plugins: [
+            pluginCollapsibleSections(),
+            pluginLineNumbers(),
+            pluginCollapseButton(),
+            pluginCopyButton(),
+            pluginLanguageBadge(),
+        ],
+        defaultProps: {
+            wrap: true,
+            overridesByLang: {
+                shellsession: {
+                    showLineNumbers: false,
                 },
             },
-            styleOverrides: {
-                codeBackground: "var(--codeblock-bg)",
-                borderRadius: "0.75rem",
-                borderColor: "none",
-                codeFontSize: "0.875rem",
-                codeFontFamily:
-                    "'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-                codeLineHeight: "1.5rem",
-                frames: {
-                    editorBackground: "var(--codeblock-bg)",
-                    terminalBackground: "var(--codeblock-bg)",
-                    terminalTitlebarBackground: "var(--codeblock-bg)",
-                    editorTabBarBackground: "var(--codeblock-bg)",
-                    editorActiveTabBackground: "none",
-                    editorActiveTabIndicatorBottomColor: "var(--primary)",
-                    editorActiveTabIndicatorTopColor: "none",
-                    editorTabBarBorderBottomColor: "var(--codeblock-bg)",
-                    terminalTitlebarBorderBottomColor: "none",
-                    copyButtonBackground: "var(--btn-regular-bg)",
-                    copyButtonBackgroundHover: "var(--btn-regular-bg-hover)",
-                    copyButtonBackgroundActive: "var(--btn-regular-bg-active)",
-                    copyButtonForeground: "var(--btn-content)",
-                },
-                textMarkers: {
-                    delHue: 0,
-                    insHue: 180,
-                    markHue: 250,
-                },
-            },
+        },
+        styleOverrides: {
+            codeBackground: "var(--codeblock-bg)",
+            borderRadius: "0.75rem",
+            borderColor: "none",
+            codeFontSize: "0.875rem",
+            codeFontFamily:
+                "'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+            codeLineHeight: "1.5rem",
             frames: {
-                showCopyToClipboardButton: false,
+                editorBackground: "var(--codeblock-bg)",
+                terminalBackground: "var(--codeblock-bg)",
+                terminalTitlebarBackground: "var(--codeblock-bg)",
+                editorTabBarBackground: "var(--codeblock-bg)",
+                editorActiveTabBackground: "none",
+                editorActiveTabIndicatorBottomColor: "var(--primary)",
+                editorActiveTabIndicatorTopColor: "none",
+                editorTabBarBorderBottomColor: "var(--codeblock-bg)",
+                terminalTitlebarBorderBottomColor: "none",
+                copyButtonBackground: "var(--btn-regular-bg)",
+                copyButtonBackgroundHover: "var(--btn-regular-bg-hover)",
+                copyButtonBackgroundActive: "var(--btn-regular-bg-active)",
+                copyButtonForeground: "var(--btn-content)",
             },
-        }),
-        svelte({
-            preprocess: vitePreprocess(),
-        }),
-        sitemap(),
-    ],
+            textMarkers: {
+                delHue: 0,
+                insHue: 180,
+                markHue: 250,
+            },
+        },
+        frames: {
+            showCopyToClipboardButton: false,
+        },
+    }), svelte({
+        preprocess: vitePreprocess(),
+    }), sitemap(), react()],
     markdown: {
         remarkPlugins: [
             remarkMath,
