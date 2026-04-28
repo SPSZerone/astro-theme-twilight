@@ -1,5 +1,6 @@
 ---
 import Audio from '@spscommon/scripts/audio/Audio.astro';
+import Totoro from '@spscommon/components/effects/Totoro.astro';
 
 import "katex/dist/katex.css";
 
@@ -239,6 +240,7 @@ const { enabled: analyticsEnabled, code: analyticsCode } = getAnalyticsConfig();
         <!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
         <div id="page-height-extend" class="hidden h-[300vh]"></div>
         <Audio />
+        <Totoro />
     </body>
 </html>
 
