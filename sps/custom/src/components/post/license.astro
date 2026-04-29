@@ -1,9 +1,12 @@
 ---
+import { formatDate } from "@spscommon/utils/date";
+import { blogAuthor } from "@spscommon/config/author.ts";
+
 import { Icon } from "astro-icon/components";
 
 import { getPostUrlBySlug } from "@utils/url";
 import { postConfig, profileConfig } from "@/config";
-import { formatDateToYYYYMMDD } from "@utils/date";
+// import { formatDateToYYYYMMDD } from "@utils/date";
 import { i18n } from "@i18n/translation";
 import I18nKey from "@i18n/i18nKey";
 
@@ -38,15 +41,19 @@ const postUrl = sourceLink || propPostUrl || getPostUrlBySlug(id);
     <div class="flex gap-6 mt-2">
         <div>
             <div class="transition text-black/30 dark:text-white/30 text-sm">{i18n(I18nKey.author)}</div>
-            <div class="transition text-black/75 dark:text-white/75 line-clamp-2">{author || profileConf.name}</div>
+            <div class="transition text-black/75 dark:text-white/75 line-clamp-2">
+                <a href={blogAuthor.homepage} class="link text-(--primary) line-clamp-2" target="_blank" rel="noopener noreferrer">
+                    {author || profileConf.name}
+                </a>
+            </div>
+        </div>
+        <div>
+          <div class="transition text-black/30 dark:text-white/30 text-sm">{i18n(I18nKey.license)}</div>
+          <a href={licenseName ? (licenseUrl || undefined) : licenseConf.url} target="_blank" class="link text-(--primary) line-clamp-2">{licenseName || licenseConf.name}</a>
         </div>
         <div>
             <div class="transition text-black/30 dark:text-white/30 text-sm">{i18n(I18nKey.publishedAt)}</div>
-            <div class="transition text-black/75 dark:text-white/75 line-clamp-2">{formatDateToYYYYMMDD(pubDate)}</div>
-        </div>
-        <div>
-            <div class="transition text-black/30 dark:text-white/30 text-sm">{i18n(I18nKey.license)}</div>
-            <a href={licenseName ? (licenseUrl || undefined) : licenseConf.url} target="_blank" class="link text-(--primary) line-clamp-2">{licenseName || licenseConf.name}</a>
+            <div class="transition text-black/75 dark:text-white/75 line-clamp-2">{formatDate(pubDate)}</div>
         </div>
     </div>
     <Icon name="fa6-brands:creative-commons" class="transition text-[15rem] absolute pointer-events-none right-6 top-1/2 -translate-y-1/2 text-black/5 dark:text-white/5"></Icon>
