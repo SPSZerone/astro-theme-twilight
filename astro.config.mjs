@@ -38,6 +38,9 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import react from "@astrojs/react";
 
 
+const isDev = process.env.NODE_ENV === 'development';
+
+
 // Choose adapter depending on deployment environment
 const adapter = process.env.GITHUB_ACTIONS
     ? undefined
@@ -56,7 +59,7 @@ const adapter = process.env.GITHUB_ACTIONS
 export default defineConfig({
     site: siteConfig.siteURL,
     base: "/",
-    trailingSlash: "always",
+    trailingSlash: isDev ? 'ignore' : 'always',
     adapter: adapter,
     integrations: [decapCmsOauth({
         configPath: "./.decap.yml", // Path to the Decap CMS configuration file
