@@ -55,6 +55,7 @@ export const getSkillStats = () => {
 
         music_instrument: skillsData.filter((s) => s.category === "music_instrument").length,
         music_tool: skillsData.filter((s) => s.category === "music_tool").length,
+        ai: skillsData.filter((s) => s.category === "ai").length,
         language: skillsData.filter((s) => s.category === "language").length,
         database: skillsData.filter((s) => s.category === "database").length,
         os_platform: skillsData.filter((s) => s.category === "os_platform").length,
