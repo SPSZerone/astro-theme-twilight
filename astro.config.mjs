@@ -60,6 +60,9 @@ export default defineConfig({
     site: siteConfig.siteURL,
     base: "/",
     trailingSlash: isDev ? 'ignore' : 'always',
+    devToolbar: {
+        enabled: false
+    },
     adapter: adapter,
     integrations: [decapCmsOauth({
         configPath: "./.decap.yml", // Path to the Decap CMS configuration file
